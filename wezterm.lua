@@ -1,12 +1,13 @@
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
 local config = wezterm.config_builder()
 
 config.default_prog = { "C:/Program Files/Git/bin/bash.exe", "--login", "-i" }
 
 config.font = wezterm.font_with_fallback({
-        "Hack Nerd Font Mono",
-        "Segoe UI Emoji",
+	"Hack Nerd Font Mono",
+	"Segoe UI Emoji",
 })
 
 config.color_scheme = "Monokai Soda (Gogh)"
@@ -18,5 +19,11 @@ config.font_size = 12.0
 config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
 config.use_cap_height_to_scale_fallback_fonts = true
+
+wezterm.on("gui-startup", function (window)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    local gui_window = window:gui_window();
+    gui_window:perform_action(wezterm.action.ToggleFullScreen, pane)
+end)
 
 return config
