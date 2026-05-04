@@ -3,7 +3,7 @@ local mux = wezterm.mux
 
 local config = wezterm.config_builder()
 
-config.default_prog = { "C:/Program Files/Git/bin/bash.exe", "--login", "-i" }
+config.default_prog = { "bash.exe", "--login", "-i" }
 
 config.font = wezterm.font_with_fallback({
 	"Hack Nerd Font Mono",
