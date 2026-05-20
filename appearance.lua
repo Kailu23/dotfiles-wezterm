@@ -7,7 +7,7 @@ function M.apply(config)
 
     config.prefer_egl = true
 
-    config.font_size = 12.0
+    config.font_size = 14.0
 
     config.allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace"
 
