@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 
 local target = wezterm.target_triple
 
-require("appearance").apply(config)
+require("settings").apply(config)
 require("keys").apply(config)
 
 require("platform").apply(config)
