@@ -7,6 +7,7 @@ local target = wezterm.target_triple
 
 require("settings").apply(config)
 require("keys").apply(config)
+require("events")
 
 if target:find("linux") then
     require("platform.linux").apply(config)

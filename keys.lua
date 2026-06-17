@@ -90,6 +90,11 @@ function M.apply(config)
                 git_tab:set_title("git")
             end),
         },
+        {
+            key = "r",
+            mods = "LEADER|CTRL",
+            action = act.EmitEvent("restore-workspaces"),
+        },
     }
 
     for i = 1, 9 do
