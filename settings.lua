@@ -2,6 +2,7 @@ local M = {}
 
 function M.apply(config)
     local wezterm = require("wezterm")
+    local mux = wezterm.mux
 
     config.color_scheme = "Catppuccin Macchiato"
 
@@ -54,8 +55,44 @@ function M.apply(config)
             { Text = " " .. wezterm.nerdfonts.oct_table .. " " .. workspace .. " " },
         }))
         window:set_right_status(wezterm.format({
-            { Text = status},
+            { Text = status },
         }))
+    end)
+
+    wezterm.on("gui-startup", function(cmd)
+        local args = {}
+        if cmd then
+            args = cmd.args
+        end
+
+        ---@param ws string
+        ---@param directory string
+        local function Spawn(ws, directory)
+            local firstTab, firstPane, window = mux.spawn_window({
+                workspace = ws,
+                cwd = directory,
+                args = args,
+            })
+            firstTab:set_title("nvim")
+            local secondTab, secondPane = window:spawn_tab({
+                cwd = directory,
+            })
+            secondTab:set_title("git")
+        end
+
+        local directory = wezterm.home_dir
+        Spawn("home", directory)
+
+        directory = wezterm.home_dir .. "/.config/nvim"
+        Spawn("nvim", directory)
+
+        directory = wezterm.home_dir .. "/.config/wezterm"
+        Spawn("wezterm", directory)
+
+        directory = wezterm.home_dir .. "/.config/bash"
+        Spawn("bash", directory)
+
+        mux.set_active_workspace("home")
     end)
 end
 
