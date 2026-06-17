@@ -45,12 +45,6 @@ function M.apply(config)
             status = "PREFIX "
         end
 
-        local basename = function(fullName)
-            -- return string.gsub(fullName, "(.*[/\\])(.*)", "%2")
-        end
-
-        -- local cwd = pane:get_current_working_dir()
-
         window:set_left_status(wezterm.format({
             { Text = " " .. wezterm.nerdfonts.oct_table .. " " .. workspace .. " " },
         }))
