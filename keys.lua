@@ -41,7 +41,6 @@ function M.apply(config)
             mods = "LEADER",
             action = act.PromptInputLine({
                 description = "Enter new name for tab",
-                initial_value = "",
                 action = wezterm.action_callback(function(window, pane, line)
                     -- line will be `nil` if they hit escape without entering anything
                     -- An empty string if they just hit enter
