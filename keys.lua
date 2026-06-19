@@ -12,6 +12,8 @@ function M.apply(config)
     config.keys = {
         { key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
         { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
+        { key = "]", mods = "LEADER", action = act.QuickSelect },
+        { key = "f", mods = "LEADER", action = act.Search 'CurrentSelectionOrEmptyString' },
         { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
         { key = "|", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
         { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
@@ -19,6 +21,7 @@ function M.apply(config)
         { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
         { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
         { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+        { key = "&", mods = "LEADER|SHIFT", action = act.CloseCurrentTab{ confirm = true } },
         { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
         { key = "s", mods = "LEADER", action = act.RotatePanes("Clockwise") },
         {
@@ -110,14 +113,20 @@ function M.apply(config)
             { key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
             { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
             { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+            { key = "H", action = act.AdjustPaneSize({ "Left", 5 }) },
+            { key = "L", action = act.AdjustPaneSize({ "Right", 5 }) },
+            { key = "K", action = act.AdjustPaneSize({ "Up", 5 }) },
+            { key = "J", action = act.AdjustPaneSize({ "Down", 5 }) },
             { key = "Escape", action = "PopKeyTable" },
             { key = "Enter", action = "PopKeyTable" },
+            { key = "q", action = "PopKeyTable" },
         },
         move_tab = {
             { key = "h", action = act.MoveTabRelative(-1) },
             { key = "l", action = act.MoveTabRelative(1) },
             { key = "Escape", action = "PopKeyTable" },
             { key = "Enter", action = "PopKeyTable" },
+            { key = "q", action = "PopKeyTable" },
         },
     }
 end
