@@ -28,7 +28,9 @@ function M.apply(config)
     }
 
     config.default_workspace = "home"
-
+    config.set_environment_variables = {
+        CHERE_INVOKING = "1",
+    }
     config.use_fancy_tab_bar = false
     config.tab_bar_at_bottom = true
 
@@ -48,7 +50,7 @@ function M.apply(config)
             { Text = " " .. wezterm.nerdfonts.oct_table .. " " .. workspace .. " " },
         }))
         window:set_right_status(wezterm.format({
-            { Text = status},
+            { Text = status },
         }))
     end)
 end

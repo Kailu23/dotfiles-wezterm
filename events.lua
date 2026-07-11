@@ -40,5 +40,5 @@ wezterm.on("restore-workspaces", function(window, pane)
 
     Spawn("nvim", directory .. "/.config/nvim")
     Spawn("wezterm", directory .. "/.config/wezterm")
-    Spawn("bash", directory .. "/.config/bash")
+    Spawn("zsh", directory .. "/.config/zsh")
 end)

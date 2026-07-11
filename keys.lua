@@ -1,3 +1,4 @@
+require("utils")
 local M = {}
 
 function M.apply(config)
@@ -13,7 +14,7 @@ function M.apply(config)
         { key = "Space", mods = "LEADER", action = act.SendKey({ key = "Space", mods = "CTRL" }) },
         { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
         { key = "]", mods = "LEADER", action = act.QuickSelect },
-        { key = "f", mods = "LEADER", action = act.Search 'CurrentSelectionOrEmptyString' },
+        { key = "f", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
         { key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
         { key = "|", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
         { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
@@ -21,7 +22,7 @@ function M.apply(config)
         { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
         { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
         { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-        { key = "&", mods = "LEADER|SHIFT", action = act.CloseCurrentTab{ confirm = true } },
+        { key = "&", mods = "LEADER|SHIFT", action = act.CloseCurrentTab({ confirm = true }) },
         { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
         { key = "s", mods = "LEADER", action = act.RotatePanes("Clockwise") },
         {
@@ -82,13 +83,13 @@ function M.apply(config)
             key = "W",
             mods = "LEADER|SHIFT",
             action = wezterm.action_callback(function(window, pane)
+                local cwd = normalize_cwd(pane:get_current_working_dir())
+
                 local tab = window:mux_window():active_tab()
                 tab:set_title("nvim")
-
-                local ssh_tab = window:mux_window():spawn_tab({})
+                local ssh_tab = window:mux_window():spawn_tab({ cwd = cwd })
                 ssh_tab:set_title("ssh")
-
-                local git_tab = window:mux_window():spawn_tab({})
+                local git_tab = window:mux_window():spawn_tab({ cwd = cwd })
                 git_tab:set_title("git")
             end),
         },
