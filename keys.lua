@@ -33,6 +33,7 @@ function M.apply(config)
         { key = "c", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
         { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
         { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+        { key = "`", mods = "LEADER", action = act.ActivateLastTab },
         { key = "t", mods = "LEADER", action = act.ShowTabNavigator },
         {
             key = "m",
