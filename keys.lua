@@ -91,6 +91,8 @@ function M.apply(config)
                 ssh_tab:set_title("ssh")
                 local git_tab = window:mux_window():spawn_tab({ cwd = cwd })
                 git_tab:set_title("git")
+
+                tab:activate()
             end),
         },
         {
