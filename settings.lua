@@ -3,7 +3,7 @@ local M = {}
 function M.apply(config)
     local wezterm = require("wezterm")
 
-    config.color_scheme = "Catppuccin Macchiato"
+    config.color_scheme = "Noctalia"
 
     config.prefer_egl = true
 
