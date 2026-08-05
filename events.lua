@@ -33,7 +33,7 @@ local function SetupHome(window)
     local gitTab = muxWindow:spawn_tab({ cwd = directory })
     gitTab:set_title("git")
 
-    firstTab:activate()
+    tabs[1]:activate()
 end
 wezterm.on("restore-workspaces", function(window, pane)
     local directory = wezterm.home_dir
