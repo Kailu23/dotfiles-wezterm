@@ -1,6 +1,6 @@
 local M = {}
 
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 local mux = wezterm.mux
 
 function M.setup()

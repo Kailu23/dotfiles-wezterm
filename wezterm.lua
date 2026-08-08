@@ -1,4 +1,4 @@
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 local mux = wezterm.mux
 local settings = require("settings")
 local keys = require("keys")
@@ -7,7 +7,7 @@ local linux = require("platform.linux")
 local windows = require("platform.windows")
 
 
-local config = wezterm.config_builder()
+local config = wezterm.config_builder() ---@type Config
 
 local target = wezterm.target_triple
 

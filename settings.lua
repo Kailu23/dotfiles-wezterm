@@ -1,7 +1,9 @@
 local M = {}
 
+--- Config is passed from wezterm.lua
+---@param config Config
 function M.apply(config)
-    local wezterm = require("wezterm")
+    local wezterm = require("wezterm") ---@type Wezterm
 
     config.color_scheme = "Noctalia"
 
